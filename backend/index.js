@@ -91,5 +91,5 @@ app.delete('/api/deletecourse/:id', (req,res)=> {
 });
 
 app.listen(PORT, ()=>{
-    console.log(`Server is running on ＄{PORT}`)
+    console.log("Server is running on: ", PORT)
 })
