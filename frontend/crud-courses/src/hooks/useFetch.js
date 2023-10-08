@@ -24,7 +24,7 @@ export default function useFetch(queryField, queryAttributesStr) {
 
     function CRUDOperations(requestField, inputData, signal){
         if (requestField === 'addCourse'){
-            axios.post(`http://localhost:3002/api/create`, inputData, { signal }).
+            axios.post(`http://localhost:3002/api/createcourse`, inputData, { signal }).
             then(response => {
                 console.log(response)
                 if (response.status !== 200) {
@@ -37,7 +37,7 @@ export default function useFetch(queryField, queryAttributesStr) {
                 });
         }
         if (requestField === 'editCourse'){
-            axios.put(`http://localhost:3002/api/update`, inputData, { signal }).
+            axios.put(`http://localhost:3002/api/updatecourse`, inputData, { signal }).
             then(response => {
                 if (response.status !== 200) {
                     alert("Server Error: Course updation failed.");
@@ -51,7 +51,7 @@ export default function useFetch(queryField, queryAttributesStr) {
         
         if (requestField === 'removeCourse'){
 
-            axios.delete(`http://localhost:3002/api/delete/${inputData.id}`, options, { signal }).
+            axios.delete(`http://localhost:3002/api/deletecourse/${inputData.id}`, { signal }).
             then(response => {
                 console.log(response)
             if (response.status !== 200) {
@@ -73,7 +73,7 @@ export default function useFetch(queryField, queryAttributesStr) {
             await CRUDOperations(queryField, queryAttributes, signal)
         }
         
-        const response = await axios.get('http://localhost:3002/api/get', { signal });
+        const response = await axios.get('http://localhost:3002/api/getcourses', { signal });
 
         // Checking if the request was a success
         if (response.status === 200) {

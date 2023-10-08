@@ -31,7 +31,7 @@ app.post('/cors', function(req, res) {
 })
 
 // Route to get all courses
-app.get("/api/get", (req,res)=>{
+app.get("/api/getcourses", (req,res)=>{
   db.query("SELECT * FROM courseContent", (err,result)=>{
     if(err) {
       console.log(err);
@@ -42,7 +42,7 @@ app.get("/api/get", (req,res)=>{
 
 
 // Route for adding a course
-app.post('/api/create', (req,res)=> {
+app.post('/api/createcourse', (req,res)=> {
 
   const CourseName = req.body.CourseName;
   const CourseAuthor = req.body.CourseAuthor;
@@ -58,7 +58,7 @@ app.post('/api/create', (req,res)=> {
 });
 
 // Route for updating a course
-app.put('/api/update', (req,res)=> {
+app.put('/api/updatecourse', (req,res)=> {
 
   console.log("Update", req.body)
 
@@ -77,7 +77,7 @@ app.put('/api/update', (req,res)=> {
 });
 
 // Route for deleting a course
-app.delete('/api/delete/:id', (req,res)=> {
+app.delete('/api/deletecourse/:id', (req,res)=> {
 
   const CourseID = req.params.id;
 
