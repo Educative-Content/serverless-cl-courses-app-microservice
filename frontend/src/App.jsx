@@ -19,8 +19,7 @@ function App() {
       <div className="d-flex flex-column" style={{ minHeight: '90vh', background: '#313131', paddingTop: '10vh' }}>
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Navigate to="/homepage" />} />
-            <Route path="homepage" element={<HomePage />} />
+            <Route path="/" element={<HomePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
