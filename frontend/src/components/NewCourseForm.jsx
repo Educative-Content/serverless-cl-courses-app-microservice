@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 
 export default function NewCourseForm({
-  setField, setTitle, setUrl, setImgUrl, setAuthor,
+  setField, setTitle, setUrl, setImgUrl,
 }) {
   // Function to update GraphQL query parameters to trigger API call to add course
   const addCourseMethod = (event) => {
@@ -18,9 +18,8 @@ export default function NewCourseForm({
       && event.target[3].value
     ) {
       setTitle(event.target[0].value);
-      setAuthor(event.target[1].value);
-      setUrl(event.target[2].value);
-      setImgUrl(event.target[3].value);
+      setUrl(event.target[1].value);
+      setImgUrl(event.target[2].value);
       setField('addCourse');
     }
   };
@@ -33,12 +32,6 @@ export default function NewCourseForm({
             <Form.Control
               placeholder="Course Title"
               aria-label="Course Title"
-            />
-          </InputGroup>
-          <InputGroup className="mb-3">
-            <Form.Control
-              placeholder="Course Author"
-              aria-label="Course Author"
             />
           </InputGroup>
           <InputGroup className="mb-3">
@@ -67,5 +60,4 @@ NewCourseForm.propTypes = {
   setTitle: PropTypes.func.isRequired,
   setUrl: PropTypes.func.isRequired,
   setImgUrl: PropTypes.func.isRequired,
-  setAuthor: PropTypes.func.isRequired,
 };

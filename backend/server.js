@@ -45,11 +45,10 @@ app.get("/api/getcourses", (req,res)=>{
 app.post('/api/createcourse', (req,res)=> {
 
   const CourseName = req.body.CourseName;
-  const CourseAuthor = req.body.CourseAuthor;
   const CourseURL = req.body.CourseURL;
   const ImageURL = req.body.ImageURL;
 
-  db.query("INSERT INTO courseContent (CourseName, CourseAuthor, CourseURL, ImageURL) VALUES (?, ?, ?, ?)",[CourseName, CourseAuthor, CourseURL, ImageURL], (err,result)=>{
+  db.query("INSERT INTO courseContent (CourseName, CourseURL, ImageURL) VALUES (?, ?, ?, ?)",[CourseName, CourseURL, ImageURL], (err,result)=>{
     if(err) {
       console.log(err);
     } 
@@ -64,11 +63,10 @@ app.put('/api/updatecourse', (req,res)=> {
 
   const CourseID = req.body.id;
   const CourseName = req.body.CourseName;
-  const CourseAuthor = req.body.CourseAuthor;
   const CourseURL = req.body.CourseURL;
   const ImageURL = req.body.ImageURL;
 
-  db.query("UPDATE courseContent SET CourseName = ?, CourseAuthor = ?, CourseURL = ?, ImageURL = ? WHERE ID = ?",[CourseName, CourseAuthor, CourseURL, ImageURL, CourseID], (err,result)=>{
+  db.query("UPDATE courseContent SET CourseName = ?, CourseURL = ?, ImageURL = ? WHERE ID = ?",[CourseName, CourseURL, ImageURL, CourseID], (err,result)=>{
     if(err) {
       console.log(err);
     } 
@@ -91,5 +89,5 @@ app.delete('/api/deletecourse/:id', (req,res)=> {
 });
 
 app.listen(PORT, ()=>{
-    console.log("Server is running on: ", PORT)
+    console.log("Server is running on: ", {PORT})
 })

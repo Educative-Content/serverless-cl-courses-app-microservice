@@ -11,7 +11,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
 export default function CourseCard({
-  courseJSON, setField, setTitle, setUrl, setImgUrl, setAuthor, setId,
+  courseJSON, setField, setTitle, setUrl, setImgUrl, setId,
 }) {
   const [editorMode, setEditorMode] = useState(false);
   const [show, setShow] = useState(false);
@@ -40,13 +40,11 @@ export default function CourseCard({
     if (event.target[0].value
       && event.target[1].value
       && event.target[2].value
-      && event.target[3].value
     ) {
       setId(courseData.ID);
       setTitle(event.target[0].value);
-      setAuthor(event.target[1].value);
-      setUrl(event.target[2].value);
-      setImgUrl(event.target[3].value);
+      setUrl(event.target[1].value);
+      setImgUrl(event.target[2].value);
       setField('editCourse');
       disableEditor();
     }
@@ -70,13 +68,6 @@ export default function CourseCard({
                     placeholder="Course Title"
                     aria-label="Course Title"
                     defaultValue={courseData.CourseName}
-                  />
-                </InputGroup>
-                <InputGroup className="mb-3">
-                  <Form.Control
-                    placeholder="Course Author"
-                    aria-label="Course Author"
-                    defaultValue={courseData.Author}
                   />
                 </InputGroup>
                 <InputGroup className="mb-3">
@@ -114,10 +105,6 @@ export default function CourseCard({
         />
         <Card.Header>{courseData.CourseName}</Card.Header>
         <Card.Body>
-          <Card.Text>
-            <b>Author:</b>
-            {` ${courseData.CourseAuthor}`}
-          </Card.Text>
           <Container style={{ padding: '5px' }} />
           <OverlayTrigger
             placement="bottom"
@@ -185,6 +172,5 @@ CourseCard.propTypes = {
   setTitle: PropTypes.func.isRequired,
   setUrl: PropTypes.func.isRequired,
   setImgUrl: PropTypes.func.isRequired,
-  setAuthor: PropTypes.func.isRequired,
   setId: PropTypes.func.isRequired,
 };

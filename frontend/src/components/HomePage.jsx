@@ -13,13 +13,11 @@ export default function HomePage() {
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
   const [imgUrl, setImgUrl] = useState('');
-  const [author, setAuthor] = useState('');
   const [id, setId] = useState('');
 
   const queryParams = {
     id: `${id}`,
     CourseName: `${title}`,
-    CourseAuthor: `${author}`,
     CourseURL:  `${url}`,
     ImageURL: `${imgUrl}`,
   };
@@ -44,7 +42,6 @@ export default function HomePage() {
       setTitle('');
       setUrl('');
       setImgUrl('');
-      setAuthor('');
       setId('');
     }
   }, [callLoading]);
@@ -76,7 +73,7 @@ export default function HomePage() {
           <h1 className="header1-design">Educative Courses List</h1>
         </Row>
         <Row style={{ paddingTop: '20px', paddingBottom: '20px' }}>
-          <CardList data={courseData} type="course" setField={setField} setTitle={setTitle} setUrl={setUrl} setImgUrl={setImgUrl} setAuthor={setAuthor} setId={setId} />
+          <CardList data={courseData} type="course" setField={setField} setTitle={setTitle} setUrl={setUrl} setImgUrl={setImgUrl} setId={setId} />
         </Row>
         <hr style={{ color: '#ffffff' }} />
         <Row style={{ paddingTop: '10px' }}>
@@ -88,7 +85,6 @@ export default function HomePage() {
             setTitle={setTitle}
             setUrl={setUrl}
             setImgUrl={setImgUrl}
-            setAuthor={setAuthor}
             setId={setId}
           />
         </Row>

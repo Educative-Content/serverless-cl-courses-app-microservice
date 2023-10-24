@@ -6,7 +6,7 @@ import CourseCard from './CourseCard';
 import LoaderCard from './loading/LoaderCard';
 
 function CardList({
-  data, type, setField, setTitle, setUrl, setImgUrl, setAuthor, setId,
+  data, type, setField, setTitle, setUrl, setImgUrl, setId,
 }) {
   let listCards = <div />;
   if (data) {
@@ -22,7 +22,6 @@ function CardList({
               setTitle={setTitle}
               setUrl={setUrl}
               setImgUrl={setImgUrl}
-              setAuthor={setAuthor}
               setId={setId}
             />
           </React.Fragment>
@@ -65,7 +64,6 @@ CardList.propTypes = {
   setTitle: PropTypes.func,
   setUrl: PropTypes.func,
   setImgUrl: PropTypes.func,
-  setAuthor: PropTypes.func,
   setId: PropTypes.func,
 };
 
@@ -74,7 +72,6 @@ CardList.defaultProps = {
   setTitle: null,
   setUrl: null,
   setImgUrl: null,
-  setAuthor: null,
   setId: null,
 };
 
