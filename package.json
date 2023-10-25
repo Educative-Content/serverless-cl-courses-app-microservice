@@ -9,7 +9,6 @@
     "start:backend": "node backend/server.js",
     "start": "concurrently \"npm run start:frontend\" \"npm run start:backend\""
   },
-  "proxy": "http://localhost:3002",
   "keywords": [],
   "author": "",
   "license": "ISC",

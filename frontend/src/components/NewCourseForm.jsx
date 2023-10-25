@@ -15,7 +15,6 @@ export default function NewCourseForm({
     if (event.target[0].value
       && event.target[1].value
       && event.target[2].value
-      && event.target[3].value
     ) {
       setTitle(event.target[0].value);
       setUrl(event.target[1].value);
