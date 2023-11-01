@@ -48,7 +48,7 @@ app.post('/api/createcourse', (req,res)=> {
   const CourseURL = req.body.CourseURL;
   const ImageURL = req.body.ImageURL;
 
-  db.query("INSERT INTO courseContent (CourseName, CourseURL, ImageURL) VALUES (?, ?, ?, ?)",[CourseName, CourseURL, ImageURL], (err,result)=>{
+  db.query("INSERT INTO courseContent (CourseName, CourseURL, ImageURL) VALUES (?, ?, ?)",[CourseName, CourseURL, ImageURL], (err,result)=>{
     if(err) {
       console.log(err);
     } 

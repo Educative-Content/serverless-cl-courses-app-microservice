@@ -8,8 +8,6 @@ export default function useFetch(queryField, queryAttributesStr) {
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const controller = new AbortController();
-
   useEffect(() => {
     // Changing loading and success state to true whenever there's an effect
     setLoading(true);
@@ -22,10 +20,10 @@ export default function useFetch(queryField, queryAttributesStr) {
             'content-type': 'text/plain'
         }}
 
-    function CRUDOperations(requestField, inputData, signal){
+    function CRUDOperations(requestField, inputData){
         if (requestField === 'addCourse'){
-            axios.post(`/api/addcourse`, inputData, options,  { signal }).
-            then(response => {
+            axios.post(`/api/createcourse`, inputData, options)
+            .then(response => {
                 console.log(response)
                 if (response.status !== 200) {
                     alert("Server Error: Course creation failed.");
@@ -37,8 +35,8 @@ export default function useFetch(queryField, queryAttributesStr) {
                 });
         }
         if (requestField === 'editCourse'){
-            axios.put(`/api/updatecourse`, inputData, options, { signal }).
-            then(response => {
+            axios.put(`/api/updatecourse`, inputData, options)
+            .then(response => {
                 if (response.status !== 200) {
                     alert("Server Error: Course updation failed.");
                 }
@@ -51,8 +49,8 @@ export default function useFetch(queryField, queryAttributesStr) {
         
         if (requestField === 'removeCourse'){
 
-            axios.delete(`/api/deletecourse?id=${inputData.id}`, options, { signal }).
-            then(response => {
+            axios.delete(`/api/deletecourse?${inputData.id}`, options)
+            .then(response => {
                 console.log(response)
             if (response.status !== 200) {
                 alert("Server Error: Course deletion failed.");
@@ -67,13 +65,12 @@ export default function useFetch(queryField, queryAttributesStr) {
     // asynchronous function to make API call
     async function fetchData() {
       try {
-        const signal = controller.signal;
 
         if (queryField !== "allCourses"){
-            await CRUDOperations(queryField, queryAttributes, signal)
+            await CRUDOperations(queryField, queryAttributes)
         }
         
-        const response = await axios.get('/api/getcourses', { signal });
+        const response = await axios.get('/api/getcourses');
 
         // Checking if the request was a success
         if (response.status === 200) {
@@ -101,11 +98,6 @@ export default function useFetch(queryField, queryAttributesStr) {
       setSuccess(true);
     }
 
-    // Cancelling the fetch request in case the user navigates
-    // away from the screen
-    return () => {
-      controller.abort();
-    };
 
     // Defining variables that trigger useFetch
   }, [queryField, queryAttributesStr]);
