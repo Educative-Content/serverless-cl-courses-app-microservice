@@ -15,14 +15,10 @@ export default function useFetch(queryField, queryAttributesStr) {
 
     // Extracting data from queryAttributesStr
     const queryAttributes = JSON.parse(queryAttributesStr);
-    const options = { headers: 
-        {
-            'content-type': 'text/plain'
-        }}
 
     function CRUDOperations(requestField, inputData){
         if (requestField === 'addCourse'){
-            axios.post(`/api/createcourse`, inputData, options)
+            axios.post(`/api/createcourse`, inputData)
             .then(response => {
                 console.log(response)
                 if (response.status !== 200) {
@@ -35,7 +31,7 @@ export default function useFetch(queryField, queryAttributesStr) {
                 });
         }
         if (requestField === 'editCourse'){
-            axios.put(`/api/updatecourse`, inputData, options)
+            axios.put(`/api/updatecourse`, inputData)
             .then(response => {
                 if (response.status !== 200) {
                     alert("Server Error: Course updation failed.");
@@ -49,7 +45,7 @@ export default function useFetch(queryField, queryAttributesStr) {
         
         if (requestField === 'removeCourse'){
 
-            axios.delete(`/api/deletecourse?${inputData.id}`, options)
+            axios.delete(`/api/deletecourse/${inputData.id}`)
             .then(response => {
                 console.log(response)
             if (response.status !== 200) {
