@@ -44,7 +44,7 @@ export default function HomePage() {
       setImgUrl('');
       setId('');
     }
-  }, [callLoading]);
+  }, [callLoading, field]);
 
   if (callLoading) {
     return (

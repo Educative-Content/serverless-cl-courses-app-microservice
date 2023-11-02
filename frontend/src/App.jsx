@@ -5,7 +5,6 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Navigate,
 } from 'react-router-dom';
 import NavBar from './components/utils/NavBar';
 import Footer from './components/utils/Footer';
